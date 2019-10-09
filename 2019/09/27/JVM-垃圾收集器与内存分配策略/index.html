@@ -25,7 +25,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/ParNew.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/CMS.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/G1.png">
-<meta property="og:updated_time" content="2019-09-27T16:07:53.854Z">
+<meta property="og:updated_time" content="2019-10-09T02:51:16.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM-垃圾收集器与内存分配策略">
 <meta name="twitter:description" content="垃圾回收（Garbage Collection）需要解决的三个问题：  哪些内存需要回收 什么时候回收 怎么回收">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-28 00:07:53" itemprop="dateModified" datetime="2019-09-28T00:07:53+08:00">2019-09-28</time>
+                <time title="修改时间：2019-10-09 10:51:16" itemprop="dateModified" datetime="2019-10-09T10:51:16+08:00">2019-10-09</time>
               </span>
             
           
@@ -320,7 +320,7 @@
 </ol>
 <h4 id="2-2-可达性分析算法（Reachability-Analysis）"><a href="#2-2-可达性分析算法（Reachability-Analysis）" class="headerlink" title="2.2 可达性分析算法（Reachability Analysis）"></a>2.2 可达性分析算法（Reachability Analysis）</h4><p>主流的如 Java、C#等语言的主流实现中都是通过可达性分析来判断对象是否存活。</p>
 <blockquote>
-<p>通过一些列的称为<strong>“GC Roots”</strong>的对象作为起始点，从这些节点往下搜索，搜索所走过的路径称之为<strong>“引用链（Reference Chain）”</strong>，当一个对象到<strong>“GC Roots”</strong>没有任何引用链相连时，则证明此对象是不可用的。</p>
+<p>通过一系列的称为<strong>“GC Roots”</strong>的对象作为起始点，从这些节点往下搜索，搜索所走过的路径称之为<strong>“引用链（Reference Chain）”</strong>，当一个对象到<strong>“GC Roots”</strong>没有任何引用链相连时，则证明此对象是不可用的。</p>
 </blockquote>
 <p>可以作为<strong>“GC Roots”</strong>的对象：</p>
 <ul>
@@ -499,7 +499,7 @@
 </ul>
 </li>
 </ol>
-<p>其中，<strong>初试标记</strong>和<strong>重新标记</strong>需要 <strong>“Stop The World”</strong>。</p>
+<p>其中，<strong>初始标记</strong>和<strong>重新标记</strong>需要 <strong>“Stop The World”</strong>。</p>
 <ol start="3">
 <li>运行示意图如下：</li>
 </ol>
@@ -775,7 +775,7 @@
 <!--  隐藏页面底部powered by hexo
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 -->
 
   <script>
@@ -823,6 +823,7 @@
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
 <script src="/js/next-boot.js?v=7.4.0"></script>
 
 
