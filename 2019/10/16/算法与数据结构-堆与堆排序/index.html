@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="堆与堆排序">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法与数据结构-堆与堆排序">
+<meta property="og:url" content="http://yoursite.com/2019/10/16/算法与数据结构-堆与堆排序/index.html">
+<meta property="og:site_name" content="严先森的博客">
+<meta property="og:description" content="堆与堆排序">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/luo.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.png">
+<meta property="og:updated_time" content="2019-10-16T03:14:46.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法与数据结构-堆与堆排序">
+<meta name="twitter:description" content="堆与堆排序">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/luo.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/10/16/算法与数据结构-堆与堆排序/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>算法与数据结构-堆与堆排序 | 严先森的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">严先森的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/算法与数据结构-堆与堆排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan-xin">
+      <meta itemprop="description" content="人生不如意十之八九，你是一二。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="严先森的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">算法与数据结构-堆与堆排序
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-16 11:13:16 / 修改时间：11:14:46" itemprop="dateCreated datePublished" datetime="2019-10-16T11:13:16+08:00">2019-10-16</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>8.8k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>堆与堆排序</p>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/luo.jpg" alt></p>
+<a id="more"></a>
+
+<h2 id="最大堆"><a href="#最大堆" class="headerlink" title="最大堆"></a>最大堆</h2><h3 id="1-构造堆的几种方式"><a href="#1-构造堆的几种方式" class="headerlink" title="1. 构造堆的几种方式"></a>1. 构造堆的几种方式</h3><ol>
+<li>向一个容量为 capacity 的堆中逐个插入元素，构造最大堆</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxHeap</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Comparable[] data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MaxHeap</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 堆索引从 1 开始，所以第 0 个空间浪费掉</span></span><br><span class="line">        data = <span class="keyword">new</span> Comparable[capacity + <span class="number">1</span>];</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 插入可比较的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 确保这一次能够添加成功，最好能够动态分配空间</span></span><br><span class="line">        <span class="keyword">assert</span> count + <span class="number">1</span> &lt;= capacity;</span><br><span class="line">        data[count + <span class="number">1</span>] = v;</span><br><span class="line">        count ++;</span><br><span class="line">        <span class="comment">// 因为新元素的添加可能导致整个堆的性质发生改变，</span></span><br><span class="line">        <span class="comment">// 所以我们将 count 这个位置的元素进行“上移”操作</span></span><br><span class="line">        shiftUp(count);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftUp</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 要确保索引范围，在这里，索引为2时，就是去和索引为1的节点(根节点)进行比较</span></span><br><span class="line">        <span class="comment">// 如父节点小于子节点，则进行交换操作</span></span><br><span class="line">        <span class="keyword">while</span> (index &gt; <span class="number">1</span> &amp;&amp; SortUtil.less(data[index / <span class="number">2</span>], data[index])) &#123;</span><br><span class="line">            SortUtil.swap(data, parent(index), index);</span><br><span class="line">            index /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取出堆中最大的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Comparable <span class="title">extractMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">assert</span> count &gt; <span class="number">0</span>;</span><br><span class="line">        Comparable ret = data[<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 先将第 1 个元素与第 count 个元素交换位置，然后对第 1 个元素进行“下移”操作</span></span><br><span class="line">        SortUtil.swap(data, <span class="number">1</span>, count);</span><br><span class="line">        count --;</span><br><span class="line">        shiftDown(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 对索引为 index 的元素执行下沉操作</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftDown</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 若子节点存在且找出最大的子节点</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="number">2</span> * index &lt;= count) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = <span class="number">2</span> * index;<span class="comment">// 此轮循环中，data[index] 应该和 data[j] 交换位置</span></span><br><span class="line">            <span class="keyword">if</span> (j + <span class="number">1</span> &lt;= count &amp;&amp; SortUtil.less(data[j], data[j + <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 右孩子存在且右孩子大于左孩子</span></span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!SortUtil.less(data[index], data[j])) <span class="keyword">break</span>;</span><br><span class="line">            SortUtil.swap(data, index, j);</span><br><span class="line">            index = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 此时，堆排序，相当于将一个堆中的最大值取出来后反向赋值，构造一个递增序列</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapSort1</span><span class="params">(Comparable[] arr, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        MaxHeap maxHeap = <span class="keyword">new</span> MaxHeap(n);、</span><br><span class="line">        <span class="comment">// 将 arr 中元素挨个插入最大堆中进行排序</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i ++) &#123;</span><br><span class="line">            maxHeap.insert(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">	    <span class="comment">// 反向赋值，最大值放到数组最后面</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i --) &#123;</span><br><span class="line">            arr[i] = maxHeap.extractMax();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在创建最大堆对象时，直接将一个数组构造为最大堆，免去插入操作，一定程度上提高效率，因为只对一半的元素进行了下移操作（第12-14行）；<strong>给定一个数组，让其形成最大堆的形状的过程称为 ==“heapify”==。</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxHeap</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Comparable[] data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="comment">// 给定一个数组，让其形成堆的形状的过程： heapify</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MaxHeap</span><span class="params">(Comparable[] arr, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        data = <span class="keyword">new</span> Comparable[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i ++) &#123;</span><br><span class="line">            data[i + <span class="number">1</span>] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        count = n;</span><br><span class="line">        <span class="comment">// 对于第 [count / 2 + 1,count] 的元素，没有子节点了，已经是一个最大堆</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = count / <span class="number">2</span>;i &gt;= <span class="number">1</span>;i --) &#123;</span><br><span class="line">            shiftDown(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 对索引为 index 的元素执行下沉操作</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftDown</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 见上一节 40 行</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取出堆中最大的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Comparable <span class="title">extractMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 见上一节 30 行</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 堆排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapSort2</span><span class="params">(Comparable[] arr, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 使用构造函数让这个堆直接成为一个最大堆</span></span><br><span class="line">        MaxHeap maxHeap = <span class="keyword">new</span> MaxHeap(arr, n);</span><br><span class="line">        <span class="comment">// 输出一个最大堆中的元素</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i --) &#123;</span><br><span class="line">            arr[i] = maxHeap.extractMax();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>不使用额外的空间，在原数组上进行最大堆堆排序。在最大堆中，先将最大元素交换到数组最后，然后对前 n - 1 个元素再次进行查找最大元素的操作。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxHeap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MaxHeap</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(Comparable[] arr, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 索引从 0 开始 heapify</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = (n - <span class="number">1</span>) / <span class="number">2</span>; i &gt;= <span class="number">0</span>;i --) &#123;</span><br><span class="line">            shiftDown(arr, n, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>;i &gt; <span class="number">0</span>;i --) &#123;</span><br><span class="line">            <span class="comment">// 第 0 个元素无需排序，就在第 0 个位置了</span></span><br><span class="line">            <span class="comment">// 把当前堆中最大元素放到最后</span></span><br><span class="line">            SortUtil.swap(arr, <span class="number">0</span>, i);</span><br><span class="line">            <span class="comment">// 对堆中剩下的 i 个元素中的第 0 个元素进行下沉操作</span></span><br><span class="line">            shiftDown(arr, i, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 对arr中n个元素中的第 index 个元素进行下沉</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftDown</span><span class="params">(Comparable[] arr, <span class="keyword">int</span> n, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">2</span> * index + <span class="number">1</span> &lt; n) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = <span class="number">2</span> * index + <span class="number">1</span>; <span class="comment">// 在此轮循环中，arr[index] 和 arr[j] 交换位置</span></span><br><span class="line">            <span class="keyword">if</span> (j + <span class="number">1</span> &lt; n &amp;&amp; SortUtil.less(arr[j], arr[j + <span class="number">1</span>]))</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (!SortUtil.less(arr[index], arr[j])) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            SortUtil.swap(arr, j, index);</span><br><span class="line">            index = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-时间复杂度"><a href="#2-时间复杂度" class="headerlink" title="2. 时间复杂度"></a>2. 时间复杂度</h3><blockquote>
+<p>N log N</p>
+</blockquote>
+<h2 id="最大索引堆"><a href="#最大索引堆" class="headerlink" title="最大索引堆"></a>最大索引堆</h2><blockquote>
+<p>当要参与比较的元素是很复杂的结构的时候，每一次交换操作很耗费时间和空间，所以考虑使用索引来记录每一个待交换元素的位置，这样在交换的时候只需要考虑索引位置，索引是 int 类型，能够提高交换效率。</p>
+</blockquote>
+<ol>
+<li>实现</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexHeap</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Comparable[] data;</span><br><span class="line">    <span class="keyword">private</span> Integer[] indexes; <span class="comment">// 索引数组</span></span><br><span class="line">    <span class="comment">// reverse[i] 表示索引 i 在 indexes 中的位置</span></span><br><span class="line">    <span class="comment">// indexes[i] = j, reverse[j] = i</span></span><br><span class="line">    <span class="comment">// indexes[reverse[i]] = i; reverse[indexes[i]] = i</span></span><br><span class="line">    <span class="comment">// 反向查找</span></span><br><span class="line">    <span class="keyword">private</span> Integer[] reverse;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="comment">// k 描述的是索引数组的位置</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftUp</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (k &gt; <span class="number">1</span> &amp;&amp; SortUtil.less(data[indexes[k / <span class="number">2</span>]], data[indexes[k]])) &#123;</span><br><span class="line">            SortUtil.swap(indexes, k / <span class="number">2</span>, k);</span><br><span class="line">            reverse[indexes[k / <span class="number">2</span>]] = k / <span class="number">2</span>;</span><br><span class="line">            reverse[indexes[k]] = k;</span><br><span class="line">            k /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shiftDown</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= count) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = <span class="number">2</span> * k; <span class="comment">// 此轮循环中，indexes[k] 和 indexes[j]交换位置</span></span><br><span class="line">            <span class="keyword">if</span> (j + <span class="number">1</span> &lt;= count &amp;&amp; </span><br><span class="line">                SortUtil.less(data[indexes[j]], data[indexes[j + <span class="number">1</span>]])) &#123;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!SortUtil.less(data[indexes[k]], data[indexes[j]]))</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            SortUtil.swap(indexes, k, j);</span><br><span class="line">            reverse[indexes[k]] = k;</span><br><span class="line">            reverse[indexes[j]] = j;</span><br><span class="line">            k = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">contain</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reverse[index + <span class="number">1</span>] != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IndexHeap</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 第 0 个位置浪费</span></span><br><span class="line">        data = <span class="keyword">new</span> Comparable[capacity + <span class="number">1</span>];</span><br><span class="line">        indexes = <span class="keyword">new</span> Integer[capacity + <span class="number">1</span>];</span><br><span class="line">        reverse = <span class="keyword">new</span> Integer[capacity + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= capacity;i ++) &#123;</span><br><span class="line">            <span class="comment">// 为 0 表示不存在</span></span><br><span class="line">            reverse[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 传入的 i 对于用户而言是从 0 索引开始的</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> index, Comparable v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count + <span class="number">1</span> &gt; capacity) &#123;</span><br><span class="line">            System.out.println(<span class="string">"堆已满，无法插入！"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (index + <span class="number">1</span> &lt;= <span class="number">1</span> &amp;&amp; index + <span class="number">1</span> &gt; capacity) &#123;</span><br><span class="line">            System.out.println(<span class="string">"非法的索引！"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 我们内部堆索引从 1 开始，所以先给 index + 1</span></span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">        data[index] = v;</span><br><span class="line">        indexes[count + <span class="number">1</span>] = index;</span><br><span class="line">        reverse[index] = count + <span class="number">1</span>;</span><br><span class="line">        count ++;</span><br><span class="line">        shiftUp(count);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Comparable <span class="title">extractMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"堆为空！"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// indexes[1] 记录最大元素所在的位置</span></span><br><span class="line">        Comparable ret = data[indexes[<span class="number">1</span>]];</span><br><span class="line">        SortUtil.swap(indexes, <span class="number">1</span>, count);</span><br><span class="line">        reverse[indexes[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">        reverse[indexes[count]] = <span class="number">0</span>;</span><br><span class="line">        count --;</span><br><span class="line">        shiftDown(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 索引堆特有，找到最大元素的索引，那么根据这个索引，我们就能够找到这个最大的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">extractMaxIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"堆为空！"</span>);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 对外部来说，index是从0开始的</span></span><br><span class="line">        Integer ret = indexes[<span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">        SortUtil.swap(indexes, <span class="number">1</span>, count);</span><br><span class="line">        reverse[indexes[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">        reverse[indexes[count]] = <span class="number">0</span>;</span><br><span class="line">        count --;</span><br><span class="line">        shiftDown(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Comparable <span class="title">getValue</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">assert</span> <span class="title">contain</span><span class="params">(index)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> data[index + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 修改堆中索引 index 处的元素为 v</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> index, Comparable v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 确保这个堆包含该索引</span></span><br><span class="line">        <span class="function"><span class="keyword">assert</span> <span class="title">contain</span><span class="params">(index)</span></span>;</span><br><span class="line"></span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">        data[index] = v;</span><br><span class="line">        <span class="comment">// 找到 indexes[j] = index, j 代表 data[index] 在堆中的位置</span></span><br><span class="line">        <span class="comment">// 之后 shiftUp(j),再 shiftDown(j)</span></span><br><span class="line"><span class="comment">//        for (int j = 1;j &lt;= count;j ++ )&#123;</span></span><br><span class="line"><span class="comment">//            if (indexes[j] == index) &#123;</span></span><br><span class="line"><span class="comment">//                shiftDown(j);</span></span><br><span class="line"><span class="comment">//                shiftUp(j);</span></span><br><span class="line"><span class="comment">//                break;</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="comment">// 优化后</span></span><br><span class="line">        <span class="keyword">int</span> j = reverse[index];</span><br><span class="line">        shiftUp(j);</span><br><span class="line">        shiftDown(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="排序算法总结"><a href="#排序算法总结" class="headerlink" title="排序算法总结"></a>排序算法总结</h2><p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.png" alt="排序算法总结"></p>
+<ol>
+<li>稳定排序：对于相等的元素，在排序后，原来靠前的元素依然靠前。相等元素的相对位置没有发生改变</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i></a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/16/算法与数据结构-排序/" rel="next" title="算法与数据结构-排序">
+                  <i class="fa fa-chevron-left"></i> 算法与数据结构-排序
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大堆"><span class="nav-text">最大堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-构造堆的几种方式"><span class="nav-text">1. 构造堆的几种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-时间复杂度"><span class="nav-text">2. 时间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大索引堆"><span class="nav-text">最大索引堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序算法总结"><span class="nav-text">排序算法总结</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yan-xin</p>
+  <div class="site-description" itemprop="description">人生不如意十之八九，你是一二。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan-xin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">43k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">39 分钟</span>
+</div>
+
+<!--  隐藏页面底部powered by hexo
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+-->
+
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("09/1/2019 12:00:00");
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  
+  <!-- 页面点击小桃心-->
+  <script type="text/javascript" src="/js/src/click-love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":175,"height":450},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
