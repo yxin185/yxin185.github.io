@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="计算机基础-问题">
+<meta name="keywords" content="面试准备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础问题">
+<meta property="og:url" content="http://yoursite.com/2019/11/26/计算机基础问题/index.html">
+<meta property="og:site_name" content="严先森的博客">
+<meta property="og:description" content="计算机基础-问题">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B61.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B62.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B63.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B61.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B62.png">
+<meta property="og:updated_time" content="2019-11-26T06:55:40.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机基础问题">
+<meta name="twitter:description" content="计算机基础-问题">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+  <link rel="canonical" href="http://yoursite.com/2019/11/26/计算机基础问题/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机基础问题 | 严先森的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">严先森的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/计算机基础问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan-xin">
+      <meta itemprop="description" content="人生不如意十之八九，你是一二。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="严先森的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机基础问题
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-26 14:54:50 / 修改时间：14:55:40" itemprop="dateCreated datePublished" datetime="2019-11-26T14:54:50+08:00">2019-11-26</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>4.9k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>4 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算机基础-问题</p>
+<a id="more"></a>
+
+<h2 id="1-计算机网络"><a href="#1-计算机网络" class="headerlink" title="1.计算机网络"></a>1.计算机网络</h2><h3 id="1-一台计算机是如何把数据发送给另外一台计算机的？"><a href="#1-一台计算机是如何把数据发送给另外一台计算机的？" class="headerlink" title="1. 一台计算机是如何把数据发送给另外一台计算机的？"></a>1. 一台计算机是如何把数据发送给另外一台计算机的？</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485105&idx=1&sn=c045b7599c1637776dd89890cac5a9b5&scene=21#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<p>基于网络通信的五层模型来回答：</p>
+<ol>
+<li><p><strong>物理层：</strong>物理层负责把两台计算机连起来，在计算机之间通过高低电频来传送0,1电信号</p>
+</li>
+<li><p><strong>数据链路层：</strong> 制定规则来进行0，1的传送，以便让计算机识别0,1电信号代表的实际含义</p>
+<ul>
+<li><p><strong>以太网协议：</strong>一组电信号构成的数据包称为一个帧，由表头和数据构成。表头的长度固定为18字节，数据部分长度不一定，所以一个帧的大小一般为64-1518字节，太大的就分为多个帧传输。计算机与计算机之前如何区分呢？引入下一个概念，唯一标识MAC</p>
+</li>
+<li><p><strong>MAC地址：</strong>每个网卡都有一个唯一的地址，称为MAC地址。由48字节构成，唯一标识</p>
+</li>
+<li><p><strong>广播与ARP协议：</strong></p>
+<ul>
+<li>ARP：Address Revolution Protocol，地址解析协议</li>
+<li>广播只在同一个子网中，数据包里面含有接收者的MAC地址，收到广播消息的子网内的主机，将数据包中的MAC地址拿出来和自己的MAC对比，如果一样，说明发送方找的就是我，那么就接收这个数据包，否则丢弃。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>网络层：</strong> 如果在一个子网内，通过广播的形式传送数据，如果不在一个子网内，那么就将数据发给网关，让网关进行转发</p>
+<ol>
+<li><strong>IP 协议：</strong></li>
+<li>0.0.0.0 ~ 255.255.255.255<ol start="2">
+<li>网络部分和主机部分</li>
+<li>判断两个 IP 地址是否是一个子网，还需要知道子网掩码，子网掩码主机位全是1</li>
+</ol>
+</li>
+<li><strong>ARP 协议：</strong><ol>
+<li>通过 ARP 协议能够获得其他主机的 MAC 地址</li>
+<li>ARP 协议通过广播的形式向一个子网内的其他所有主机发送一个数据包，包含想要获得的MAC地址对应的IP地址。对方收到这个数据包后，将IP地址拿出来和自己的IP地址进行比较，如果相同，就把自己的IP地址回复给想要获取的那一方，否则丢弃。</li>
+</ol>
+</li>
+<li><strong>DNS 服务器：</strong><ol>
+<li>通常我们想要访问一个网站，输入的是网站的域名，而不是直接输入网站的 IP 地址。</li>
+<li>DNS 服务器能够将我们访问的网站域名解析为对应的 IP 地址</li>
+</ol>
+</li>
+<li>网络层的功能：让我们能够在网络中找到一台计算机在哪里，判断我们是否属于同一个子网。</li>
+</ol>
+</li>
+<li><p><strong>传输层：</strong> 建立<strong>端口</strong>到<strong>端口</strong>的连接。以供特定的程序来接收处理。</p>
+<ol>
+<li>常见 TCP 与 UDP 协议</li>
+</ol>
+</li>
+<li><p><strong>应用层：</strong></p>
+<ol>
+<li>指定数据的格式、规则，收到好才好解读渲染。</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-电脑的-ip-是怎么来的？"><a href="#2-电脑的-ip-是怎么来的？" class="headerlink" title="2. 电脑的 ip 是怎么来的？"></a>2. 电脑的 ip 是怎么来的？</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485482&idx=1&sn=39550699789ae9078da3420f0e0e3b09&scene=21#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<ol>
+<li>DHCP （Dynamic Host Configuration Protocol）动态主机配置协议</li>
+<li>客户端请求 IP<ol>
+<li><strong>客户端发送一个广播，广播的目的 IP 是 255.255.255.255，目的端口是 67，为了让别人知道他是来请求一个 IP 地址的，将客户端的源 IP 设置为 0.0.0.0，源端口是 68。</strong> 将这个 IP 请求报文称为 <strong>discover 报文</strong>（UDP）</li>
+</ol>
+</li>
+<li><strong>DHCP 响应</strong><ol>
+<li>DHCP 收到源 IP 为0.0.0.0 的报文，就会给他提供一个 IP，包括 <strong>IP地址，子网掩码、网关、IP有效期</strong>，通过发起请求的客户端的 MAC 地址，DHCP服务器将这些信息送过去。也是通过广播的形式，此时广播报文的源 IP 为DHCP服务器的 IP，目的IP为255.255.255.255</li>
+<li>DHCP 提供 IP 的报文称为 <strong>offer 报文</strong>。</li>
+</ol>
+</li>
+<li><strong>客户端挑选 IP 地址</strong><ol>
+<li>可能不止一台 DHCP 服务器收到了 IP 请求，对于 客户端而言，一般选择最先收到的 offer 报文，然后给对应的 DHCP 服务器发送一个 request 报文，表明已经收到了他提供的 IP。</li>
+</ol>
+</li>
+<li>如果 DHCP 服务器不在所在的局域网，那么就需要网关进行传递，中间涉及到 NAT 地址转换协议</li>
+</ol>
+<h3 id="3-谈谈NAT"><a href="#3-谈谈NAT" class="headerlink" title="3.谈谈NAT"></a>3.谈谈NAT</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485189&idx=1&sn=70571f1c204c7b1e9cedf10ff6885492&scene=21#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<ol>
+<li>NAT（Network Address Translation）</li>
+<li>为减少 IP 地址的消耗，可以一个公司拥有一个属于自己的内网（局域网），该局域网分配有一个 IP 地址，可以作为整个局域网的网关，与外界网络进行通信；</li>
+<li>局域网内的主机想要和外部的网络进行通信，需要经过这个网关，为了识别局域外内部是哪一台主机想要和外界通信，网关维护有一个地址转换表，存储的是内部主机的 IP：端口号 与映射后的 IP：端口号 对照表；</li>
+<li>通过这个地址转换表，即 NAT 协议，局域网内部的主机就能够和外界通信了</li>
+<li>局域网内的 IP 称为 内网IP</li>
+<li>网关 IP，百度等这样的 IP 称为 全球IP</li>
+</ol>
+<h3 id="4-三次握手"><a href="#4-三次握手" class="headerlink" title="4. 三次握手"></a>4. 三次握手</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485310&idx=1&sn=615cd1a1243e3b6ab3d1c0b654d29f8b&scene=21#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<ol>
+<li><p><strong>作用：</strong></p>
+<ol>
+<li>确认双方的接收与发送能力是否正常</li>
+<li>防止错误连接到达服务器，让 Server 错误打开连接</li>
+<li>指定自己的初始化序列号，为后面的可靠传送做准备</li>
+<li>如果是 HTTPS 协议的话，三次握手这个过程，还会进行数字证书的验证以及加密秘钥的生成</li>
+</ol>
+</li>
+<li><p><strong>三次握手的过程</strong></p>
+<p>刚开始，客户端处于 closed 状态，服务器端处于 listen 状态</p>
+<ol>
+<li><strong>第一次握手：</strong> 客户端给服务器端发送一个 SYN 报文，并指明客户端的初始化序列号 ISN（c）。此时客户端处于 SYN_SENT 阶段</li>
+<li><strong>第二次握手：</strong> 服务器端收到来自客户端的 SYN 报文之后，会以自己的 SYN 报文作为回答，并且也指定了自己的初始化序列号 ISN（s）。同时把 客户端的 ISN（c）+ 1 作为 ACK 的值，表明自己已经收到了客户端的 SYN，此时服务器处于 SYN_REVD 状态</li>
+<li><strong>第三次握手：</strong> 客户端收到 SYN 报文后，会发送一个 ACK 报文，当然，也是把服务器的 ISN（s）+ 1 作为 ACK 的值，表示已经收到了服务端的 SYN，此时客户端处于 ESTABLISHED 状态</li>
+<li>服务器收到 ACK 报文后，也就处于 ESTABLISHED  状态，双方建立起来连接。</li>
+</ol>
+</li>
+<li><p>示意图</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手"></p>
+<ol start="4">
+<li><p>常见问题</p>
+<ol>
+<li><strong>ISN（Initial Sequence Number） 是固定的吗?</strong></li>
+</ol>
+<blockquote>
+<p>通信双方交换 ISN 以便让对方知道接下来接受数据的时候如何按照序列号来重新组装数据。如果是固定的，攻击者很容易猜出后续的确认号，因此，<strong>ISN 是动态生成的</strong>。</p>
+</blockquote>
+<ol start="2">
+<li><strong>什么是半连接队列？</strong></li>
+</ol>
+<blockquote>
+<p>服务器端第一次收到 SYN 后，就处于 SYN_RECD 状态，此状态下的请求连接放在一个队列里面，该队列就是<strong>半连接队列</strong>。完成三次握手后，建立起来的连接会放在一个<strong>全连接队列</strong>中。如果队列满，可能出现丢包现象。</p>
+</blockquote>
+<ol start="3">
+<li><strong>SYN-ACK 重传机制</strong></li>
+</ol>
+<blockquote>
+<p>服务器发送完 SYN - ACK 包，如果未收到客户端的确认报文，服务器进行首次重传，等待一段时间后仍未收到确认包，进行第二次重传，如果重传次数超过系统规定的最大重传次数，那么这个连接信息就从半连接队列中删除。等待时间呈指数增长：1 2 4 8.。。</p>
+</blockquote>
+<ol start="4">
+<li><strong>三次握手过程中可以携带数据吗？</strong></li>
+</ol>
+<blockquote>
+<p>第一二次握手不能携带，第三次握手，其实客户端已经处于 建立连接 状态了，所以第三次握手可以携带数据。</p>
+<p>第一次握手不能携带数据是避免服务器收到恶意的客户端在第一次握手信息中携带大量数据，且反复重发 SYN 报文，造成服务器时间，空间的浪费。</p>
+</blockquote>
+<ol start="5">
+<li><strong>为什么两次握手不行？</strong></li>
+</ol>
+<blockquote>
+<p> 客户端发送的请求如果在网络中滞留，则会隔很长时间才能收到服务器发回的连接确认。客户端等待一个超时重传时间之后，就会重新请求连接，但滞留的连接请求最后还是会到达服务器。如不进行第三次握手，那 Server 就打开两个连接。若有第3次握手，客户端会忽略 Server 之后发送的滞留请求的连接确认。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="5-四次挥手"><a href="#5-四次挥手" class="headerlink" title="5. 四次挥手"></a>5. 四次挥手</h3><p>刚开始，双方都处于 ESTABLISHED 状态，假如是客户端首先发起关闭请求：</p>
+<ol>
+<li><strong>第一次挥手：</strong> 客户端发送一个 FIN 报文，报文中会指定一个序列号。此时客户端会处于 <strong>FIN_WAIT1</strong> 状态；</li>
+<li><strong>第二次挥手：</strong> 服务器端收到一个 FIN 报文后，会发送 ACK 报文，且把客户端的序列号+1作为 ACK 报文的序列号值，表明已经收到客户端的 FIN 报文了，此时服务器端处于 <strong>CLOSE_WAIT</strong> 状态。</li>
+<li><strong>第三次挥手：</strong> 如果服务器端也想断开连接了，一样发送一个 FIN 报文给客户端，且指定一个序列号。此时服务器端处于 <strong>LAST_ACK</strong>  状态</li>
+<li><strong>第四次挥手：</strong> 客户端收到 FIN 后，发送一个 ACK 作为应答，此时客户端处于  <strong>TIME_WAIT</strong> 状态。需要过一阵子以确保服务器端收到自己的 ACK 报文之后就进入 <strong>CLOSED</strong>  状态。</li>
+<li>服务器端收到 ACK 报文之后，也就处于关闭状态了。</li>
+<li>示意图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"></p>
+<h4 id="1-注意要点："><a href="#1-注意要点：" class="headerlink" title="1.注意要点："></a>1.<strong>注意要点：</strong></h4><ol>
+<li>每一次报文交换后，客户端与服务器端的状态是什么样的。</li>
+<li>Client 发送了 FIN 报文后，Server  一收到这个报文就进入 Close-Wait 状态，这个状态是为了让 Server 发送还未发送完成的数据，传送完后，Server 也发送 FIN 来结束连接。</li>
+<li><strong>Client 接收到 Server 的 FIN 后，需要进入一个 Time-Wait 状态，时间为 2MSL（最大报文存活时间），再进入 Closed 状态，原因？</strong><ol>
+<li>确保最后一个确认报文能够到达，若 Server 没有收到 Client 的 ACK，就会重新发送 FIN 报文，Client 等待一段时间就是为此；</li>
+<li>等待一段时间是为了让本地连接持续时间内产生的所有报文从网络中消失，使得下一个新的连接不会出现旧的连接请求报文。</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-TCP流量控制机制"><a href="#6-TCP流量控制机制" class="headerlink" title="6. TCP流量控制机制"></a>6. TCP流量控制机制</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485202&idx=1&sn=1e2222aa509d762a4ac0efc317163155&scene=21#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<ol>
+<li><strong>为什么要进行流量控制？</strong></li>
+</ol>
+<blockquote>
+<p> 接收方缓存满后，再接受数据包会<strong>出现丢包的问题</strong>，为了避免丢包问题，控制发送方发送速率,让接收方、发送方处于动态平衡的策略叫做<strong>流量控制</strong>。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B61.png" alt></p>
+<ol start="2">
+<li><strong>如何控制</strong></li>
+</ol>
+<blockquote>
+<p>接收方每次接收到数据后，在<strong>发送确认报文</strong>的时候可以将自己<strong>缓冲区还剩下多少空间（接收窗口 win）</strong>告诉发送方。</p>
+<p>发送方收到这个接收窗口的信息后，便调整自己的发送速率，即<strong>调整发送窗口</strong>的大小，当发送窗口变为0，则停止发送数据，避免出现丢包的情况。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B62.png" alt></p>
+<ol start="3">
+<li><strong>发送方什么时候再继续发送数据？</strong><ol>
+<li>当发送方收到 win = 0 的消息后，就停止发送报文，同时打开一个<strong>定时器</strong>，每隔一段时间就发送一个<strong>测试报文</strong>去询问接收方，“你准备好了吗？”，如果接收方回复可以继续发送，则继续发送；若 win 还是等于 0 ，则刷新启动定时器，准备下一次询问。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B63.png" alt></p>
+<h4 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4.注意事项"></a>4.注意事项</h4><ol>
+<li>TCP/IP 全双工传输，因此通信双方都有两个滑动窗口，一个用于接受数据，<strong>接收窗口</strong>；一个用于发送数据，<strong>发送窗口（拥塞窗口）</strong>。指出窗口大小的通知称为 “<strong>窗口通告</strong>”。</li>
+<li>接收窗口的大小固定吗？<ol>
+<li>现在的TCP协议中，大小是动态调整的</li>
+</ol>
+</li>
+<li>接收窗口越大越好吗？<ol>
+<li>太小，丢包率上升；太大，消耗内存。</li>
+<li>根据网络环境以及发送方的拥塞窗口来进行动态调整。</li>
+</ol>
+</li>
+<li>一般情况下：接收窗口 &gt;= 发送窗口</li>
+</ol>
+<h3 id="7-拥塞控制机制"><a href="#7-拥塞控制机制" class="headerlink" title="7.  拥塞控制机制"></a>7.  拥塞控制机制</h3><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485204&amp;idx=1&amp;sn=27daef390eec05b3d5db7cebcdcb4b7c&source=41#wechat_redirect" target="_blank" rel="noopener">参考来源</a></p>
+<h4 id="1-为什么要进行拥塞控制？"><a href="#1-为什么要进行拥塞控制？" class="headerlink" title="1.为什么要进行拥塞控制？"></a>1.为什么要进行拥塞控制？</h4><p>​    假设主机A和主机B通信</p>
+<p>​    当主机A给主机B发送报文后，由于某些原因，迟迟没有收到主机B的ACK确认报文，那么主机A会认为报文被丢失了，那么主机A将继续给主机B发送报文。但是现实情况可能是因为网络中有太多主机占用信道资源，导致<strong>网络拥塞</strong>，主机A第一次给主机B发送的报文还是可以到达主机B的，但是A再次给主机B发送了一个报文，不仅造成网络进一步拥塞，还浪费了信道资源。所以我们需要进行拥塞控制。</p>
+<h4 id="2-如何知道网络的拥塞情况？"><a href="#2-如何知道网络的拥塞情况？" class="headerlink" title="2.如何知道网络的拥塞情况？"></a>2.如何知道网络的拥塞情况？</h4><p>​    将A一次性连续发送的数据包个数称之为“<strong>拥塞窗口</strong>”，用N表示吧。那么A怎么知道网络的拥塞情况呢？</p>
+<p>开始阶段，发送数据包试探，其中 N 指数增长，到达一个阈值 ssthresh 后，再线性增长。</p>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B61.png" alt></p>
+<h4 id="3-到了瓶颈值后怎么办？"><a href="#3-到了瓶颈值后怎么办？" class="headerlink" title="3.到了瓶颈值后怎么办？"></a>3.到了瓶颈值后怎么办？</h4><ol>
+<li>将达到瓶颈值的 N 称为 Max；</li>
+<li>到达 Max 后，我们就回到最原始的状态，1 2 4 8 。。。这样开始，<strong>同时，</strong> 设置阈值 <strong>ssthresh​ = Max / 2</strong></li>
+</ol>
+<h4 id="4-超时事件一定是网络拥塞吗？"><a href="#4-超时事件一定是网络拥塞吗？" class="headerlink" title="4.超时事件一定是网络拥塞吗？"></a>4.超时事件一定是网络拥塞吗？</h4><p>​    还有可能是某个数据包出现了丢失或者损害，导致这个数据包超时时间发生。</p>
+<p>通过冗余 ACK 防止这种情况。当 A 连续收到三个确认 M2 的 ACK  且M3超时事件还没发生。A就知道 M3 可能丢失了，这个时候A就不必等待 M3 设置的计时器到期了，而是<strong>快速重传</strong>M3 。 并且把 ssthresh 设置为 Max 的一半，即 ssthresh = Max / 2 , <strong>但是这个时候并非把控制窗口 N 设置为1，而是让N = ssthresh，N 在一个一个增长。</strong> 这种情况也叫做 <strong>快速恢复。</strong></p>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B62.png" alt></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/面试准备/" rel="tag"><i class="fa fa-tag"></i></a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/06/MySQL技术内幕读书笔记/" rel="next" title="MySQL-InnoDB">
+                  <i class="fa fa-chevron-left"></i> MySQL-InnoDB
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-计算机网络"><span class="nav-text">1.计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一台计算机是如何把数据发送给另外一台计算机的？"><span class="nav-text">1. 一台计算机是如何把数据发送给另外一台计算机的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-电脑的-ip-是怎么来的？"><span class="nav-text">2. 电脑的 ip 是怎么来的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-谈谈NAT"><span class="nav-text">3.谈谈NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-三次握手"><span class="nav-text">4. 三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-四次挥手"><span class="nav-text">5. 四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-注意要点："><span class="nav-text">1.注意要点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-TCP流量控制机制"><span class="nav-text">6. TCP流量控制机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-注意事项"><span class="nav-text">4.注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-拥塞控制机制"><span class="nav-text">7.  拥塞控制机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-为什么要进行拥塞控制？"><span class="nav-text">1.为什么要进行拥塞控制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-如何知道网络的拥塞情况？"><span class="nav-text">2.如何知道网络的拥塞情况？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-到了瓶颈值后怎么办？"><span class="nav-text">3.到了瓶颈值后怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-超时事件一定是网络拥塞吗？"><span class="nav-text">4.超时事件一定是网络拥塞吗？</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yan-xin</p>
+  <div class="site-description" itemprop="description">人生不如意十之八九，你是一二。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan-xin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">64k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">59 分钟</span>
+</div>
+
+<!--  隐藏页面底部powered by hexo
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+-->
+
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("09/1/2019 12:00:00");
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  
+  <!-- 页面点击小桃心-->
+  <script type="text/javascript" src="/js/src/click-love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":175,"height":450},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
