@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="面试常见问题第二部分">
+<meta name="keywords" content="面试准备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试常见问题-java篇-part2">
+<meta property="og:url" content="http://yoursite.com/2019/12/02/面试常见问题-java篇-part2/index.html">
+<meta property="og:site_name" content="严先森的博客">
+<meta property="og:description" content="面试常见问题第二部分">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%83%BD%E8%A2%AB%E9%87%8D%E5%86%99%E5%90%97.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%85%E6%8B%B7%E8%B4%9D1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B7%B1%E6%8B%B7%E8%B4%9D.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A22.png">
+<meta property="og:updated_time" content="2019-12-02T12:06:55.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试常见问题-java篇-part2">
+<meta name="twitter:description" content="面试常见问题第二部分">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%83%BD%E8%A2%AB%E9%87%8D%E5%86%99%E5%90%97.png">
+  <link rel="canonical" href="http://yoursite.com/2019/12/02/面试常见问题-java篇-part2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>面试常见问题-java篇-part2 | 严先森的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">严先森的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/面试常见问题-java篇-part2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan-xin">
+      <meta itemprop="description" content="人生不如意十之八九，你是一二。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="严先森的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">面试常见问题-java篇-part2
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-02 19:57:10 / 修改时间：20:06:55" itemprop="dateCreated datePublished" datetime="2019-12-02T19:57:10+08:00">2019-12-02</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>14k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>36 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>面试常见问题第二部分</p>
+<a id="more"></a>
+
+<h1 id="1-Java基础"><a href="#1-Java基础" class="headerlink" title="1.Java基础"></a>1.Java基础</h1><h2 id="11-String-转换成-Integer-的方式及原理"><a href="#11-String-转换成-Integer-的方式及原理" class="headerlink" title="11. String 转换成 Integer 的方式及原理"></a>11. String 转换成 Integer 的方式及原理</h2><ol>
+<li><p>使用 Integer 类的 <code>Integer.parseInt()</code> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">"17"</span>;</span><br><span class="line">        Integer i = Integer.parseInt(s);</span><br><span class="line">        <span class="keyword">boolean</span> res = i.equals(<span class="number">13</span>);</span><br><span class="line">        System.out.println(i);	<span class="comment">// 输出 17</span></span><br><span class="line">        System.out.println(res);	<span class="comment">// 输出 false</span></span><br><span class="line">    	Integer num = Integer.parseInt(s, <span class="number">8</span>);</span><br><span class="line">    	System.out.println(num);	<span class="comment">// 输出 15 = 1 * 8^1 + 7 * 8^0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述方法默认使用十进制解析，也可以传入参数指定将 s 按参数进制解析</p>
+<ol>
+<li>11 - 22  行进行参数检验，包括<strong>字符串和进制</strong>是否符合要求。<ol>
+<li>字符串不为空，否则抛出异常</li>
+<li>进制在 [2,36] 之间，否则抛出异常</li>
+<li>开始处理字符串，23 行之后<ol>
+<li>取字符串第一位字符，根据字符的 ASCII 码与 ‘0’ 比较，判断是不是 ‘+’ 或 ‘-‘</li>
+<li>确定正负数后，逐步获取每位字符的 int 值；</li>
+<li>通过 *= 和 -= 对各结果进行拼接</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">parseInt</span><span class="params">(String s)</span> <span class="keyword">throws</span> NumberFormatException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> parseInt(s,<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 指定基数 radix</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">parseInt</span><span class="params">(String s, <span class="keyword">int</span> radix)</span> <span class="keyword">throws</span> NumberFormatException </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * WARNING: This method may be invoked early during VM initialization</span></span><br><span class="line"><span class="comment">     * before IntegerCache is initialized. Care must be taken to not use</span></span><br><span class="line"><span class="comment">     * the valueOf method.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NumberFormatException(<span class="string">"null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (radix &lt; Character.MIN_RADIX) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NumberFormatException(<span class="string">"radix "</span> + radix +</span><br><span class="line">                                        <span class="string">" less than Character.MIN_RADIX"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (radix &gt; Character.MAX_RADIX) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NumberFormatException(<span class="string">"radix "</span> + radix +</span><br><span class="line">                                        <span class="string">" greater than Character.MAX_RADIX"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">boolean</span> negative = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, len = s.length();</span><br><span class="line">    <span class="keyword">int</span> limit = -Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">int</span> multmin;</span><br><span class="line">    <span class="keyword">int</span> digit;</span><br><span class="line">	<span class="comment">// 主体思路是首先判断第一位是否是符号，然后逐位转换</span></span><br><span class="line">    <span class="keyword">if</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> firstChar = s.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// ‘-’ 和 ‘+’ 的ASCII码分别为45和43，都小于字符‘0’的ASCII码48</span></span><br><span class="line">        <span class="keyword">if</span> (firstChar &lt; <span class="string">'0'</span>) &#123; <span class="comment">// Possible leading "+" or "-"</span></span><br><span class="line">            <span class="keyword">if</span> (firstChar == <span class="string">'-'</span>) &#123;</span><br><span class="line">                negative = <span class="keyword">true</span>;	<span class="comment">// 负数</span></span><br><span class="line">                limit = Integer.MIN_VALUE;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (firstChar != <span class="string">'+'</span>)</span><br><span class="line">                <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="comment">// Cannot have lone "+" or "-"</span></span><br><span class="line">                <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        multmin = limit / radix;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">            <span class="comment">// Accumulating negatively avoids surprises near MAX_VALUE</span></span><br><span class="line">            <span class="comment">// 这个方法比较关键，主要作用是根据字符的ASCII码把字符转换成int类型，如字符‘2’，则返回int类型的2，具体分析看下面；</span></span><br><span class="line">            digit = Character.digit(s.charAt(i++),radix);</span><br><span class="line">            <span class="keyword">if</span> (digit &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (result &lt; multmin) &#123;</span><br><span class="line">                <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 这边就是对返回int作一系列的拼接运算，得到个、百、千位的结果</span></span><br><span class="line">            result *= radix;</span><br><span class="line">            <span class="keyword">if</span> (result &lt; limit + digit) &#123;</span><br><span class="line">                <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line">            &#125;</span><br><span class="line">            result -= digit;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> NumberFormatException.forInputString(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> negative ? result : -result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="12-静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？"><a href="#12-静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？" class="headerlink" title="12. 静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？"></a>12. 静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？</h2><h3 id="1-是否可以被重写？"><a href="#1-是否可以被重写？" class="headerlink" title="1. 是否可以被重写？"></a>1. 是否可以被重写？</h3><ol>
+<li><p>我们先看代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Son1 s = <span class="keyword">new</span> Son1();</span><br><span class="line">        s.printFatherStatic();  <span class="comment">// 输出：子类继承父类静态属性：我是爸爸的静态属性</span></span><br><span class="line">        s.printStaticMethod();  <span class="comment">// 输出：我是父类的静态方法</span></span><br><span class="line">        System.out.println(s.fatherStatic);   <span class="comment">// 输出：我是爸爸的静态属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String fatherStatic = <span class="string">"我是爸爸的静态属性"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printStaticMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是父类的静态方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son1</span> <span class="keyword">extends</span> <span class="title">Father1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printFatherStatic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"子类继承父类静态属性："</span> + fatherStatic);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过上面的代码，我们可以看出，子类可以直接使用定义在父类内部的静态属性，也可以调用父类的静态方法，所以说明，<strong>子类可以继承父类的静态属性和静态方法</strong>。</p>
+</li>
+<li><p><strong>原因：</strong></p>
+<ol>
+<li>因为静态方法和静态属性在程序开始运行开始后就已经分配了内存，所有引用到该方法和属性的对象所指向的都是同一块内存区域中的数据，也就是该静态方法、静态属性；</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-是否可以被重写？"><a href="#2-是否可以被重写？" class="headerlink" title="2.是否可以被重写？"></a>2.是否可以被重写？</h3><ol>
+<li>在上述代码的基础上，加上几行，报错！</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E8%83%BD%E8%A2%AB%E9%87%8D%E5%86%99%E5%90%97.png" alt></p>
+<ol start="2">
+<li><p><strong>如果不加注解，直接写方法，相当于是在子类重写定义了一个方法，这个方法并不是对父类静态方法的重写，仅仅是定义了一个和父类静态方法名字一样的子类方法。</strong></p>
+</li>
+<li><p><strong>原理同上： 子类中如果定义了相同名称的静态方法，并不会重写，而应该是在内存中又分配了一块给子类的静态方法，没有重写这一说 。</strong></p>
+</li>
+</ol>
+<h2 id="13-成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用"><a href="#13-成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用" class="headerlink" title="13. 成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用"></a>13. 成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用</h2><p>​    内部类只是 Java 编译器的概念，对于 JVM 而言，每个内部类最终都会被编译成一个独立的类，生成独立的字节码文件。<strong>内部类可以访问外部类的私有变量</strong>。 <strong>方法内部类（局部内部类）是在一个方法内定义和使用的；匿名内部类使用范围很小，他们都不能在外部使用。</strong>     <strong>成员内部类和静态内部类可以被外部使用，不过他们都可以被声明成 private，即不能被外部使用了。</strong></p>
+<h3 id="1-静态内部类"><a href="#1-静态内部类" class="headerlink" title="1. 静态内部类"></a>1. 静态内部类</h3><ol>
+<li><strong>内部类访问了外部类的一个私有变量 shared，其实私有变量是不能被类外部访问的，Java 的解决方法是：自动为 Outer1 生成一个非私有的方法 access$0，他返回这个私有静态变量 shared。</strong></li>
+<li>使用场景：如果他与外部类关系密切，且不依赖于外部类实例，则可以考虑定义为静态内部类。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> shared = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">// 静态内部类</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 可以访问外部类的私有静态变量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"inner = "</span> + shared);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在类内部，可以直接使用静态内部类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StaticInner si = <span class="keyword">new</span> StaticInner();</span><br><span class="line">        si.innerMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outside</span> </span>&#123;</span><br><span class="line">    <span class="comment">// public 静态内部类可以被外部使用，不过要用 “外部类.静态内部类” 的方式使用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer1.StaticInner osi = <span class="keyword">new</span> Outer1.StaticInner();</span><br><span class="line">        osi.innerMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-成员内部类"><a href="#2-成员内部类" class="headerlink" title="2.成员内部类"></a>2.成员内部类</h3><ol>
+<li><strong>成员内部类对象总是与一个外部类对象相连的。</strong> 不能直接使用 <code>new Outer2.Inner()</code> 的方法创建对象，应该先创建一个外部类对象</li>
+<li>成员内部类内部不能定义静态的变量和方法，因为成员内部类与外部是息息相关的，不应该单独使用；</li>
+<li>使用场景：<strong>如果内部类与外部类关系密切，需要访问外部类的实例变量和方法，则可以考虑定义为成员内部类。外部类的一些方法的返回值可能是某个接口，为了返回这个接口，外部类方法可能使用内部类实现这个接口，这个内部类可以被设计为 private，对外完全隐蔽。</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个成员内部类对象</span></span><br><span class="line">Outer2 outer2 = <span class="keyword">new</span> Outer2();</span><br><span class="line">Outer2.Inner inner = outer2.new Inner();</span><br><span class="line">inner.innerMethod();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 成员内部类可以访问外部类的实例变量和方法</span></span><br><span class="line">            System.out.println(<span class="string">"outer a = "</span> + a);</span><br><span class="line">            <span class="comment">// 这种写法一般在重名时使用，否则 Outer.this 是多余的</span></span><br><span class="line">            Outer2.<span class="keyword">this</span>.action();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"action"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Inner inner = <span class="keyword">new</span> Inner();</span><br><span class="line">        inner.innerMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-方法内部类（局部内部类）"><a href="#3-方法内部类（局部内部类）" class="headerlink" title="3.方法内部类（局部内部类）"></a>3.方法内部类（局部内部类）</h3><ol>
+<li>只能在定义的方法内使用；</li>
+<li>方法内部类可以访问方法的参数和方法中的局部变量，不过，在 Java 8 之前，这些局部变量都必须被声明成 final，            Java 8 不再要求，<strong>但变量不能被重新赋值，否则会有编译错误</strong>。实际上，<strong>方法内部类操作的并不是外部的变量，而是他自己的实例变量</strong>，只是这些变量的值和外部一样，对这些变量赋值，并不会改变外部的值，为避免混淆，干脆规定必须声明为 final。</li>
+<li><strong>如果的确需要修改外部的变量，那么可以将变量改为只包含该变量的数组，修改数组中的值。</strong> 例如 str 是一个只含一个元素的数组，方法内部类不能修改 str 本身，但是可以修改 str 的数组元素。</li>
+</ol>
+<h3 id="4-匿名内部类"><a href="#4-匿名内部类" class="headerlink" title="4.匿名内部类"></a>4.匿名内部类</h3><ol>
+<li><p>没有单独的类定义，在创建对象的时候定义类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 父类(参数列表) &#123;</span><br><span class="line">    <span class="comment">// 匿名内部类实现部分</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> 父接口() &#123;</span><br><span class="line">    <span class="comment">// 匿名内部类实现部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只能使用一次，没有名字，没有构造方法，但可以根据参数列表调用父类的构造方法</p>
+</li>
+<li><p>匿名内部类能做到的，方法内部类都能做。</p>
+</li>
+</ol>
+<h2 id="15-讲一下常见编码方式？"><a href="#15-讲一下常见编码方式？" class="headerlink" title="15. 讲一下常见编码方式？"></a>15. 讲一下常见编码方式？</h2><h3 id="1-非-Unicode-编码"><a href="#1-非-Unicode-编码" class="headerlink" title="1.非 Unicode 编码"></a>1.非 Unicode 编码</h3><blockquote>
+<p>包括 ASCII（美）、ISO 8859-1、Windows-1252（西欧）、（后中国）GB2312、GBK、GB18030 和 Big5</p>
+</blockquote>
+<ol>
+<li>ASCII<ol>
+<li>128个字符的二进制表示方法，8位表示，最高位为0，剩下7位表示字符</li>
+<li>数字 0 - 9，用 ‘48’ - ‘57’ 表示</li>
+<li>大写字母 A - Z 用 ‘65’ - ‘90’ 表示</li>
+<li>小写字母 a - z 用  ‘97’ = ‘122’ 表示（在大写的基础上加32）</li>
+<li>不够表示其他国家的字符</li>
+</ol>
+</li>
+<li>GBK<ol>
+<li>建立在 GB2312 的基础上，向下兼容。GBK 增加了 14000 多个汉字，共计约 21000个汉字，包括繁体字</li>
+<li>使用固定的两个字节表示，高位范围是 0X81<del>0XFE，地位字节范围是 0X40</del>0X7E 和 0X80~0XFE</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-Unicode-编码"><a href="#2-Unicode-编码" class="headerlink" title="2.Unicode 编码"></a>2.Unicode 编码</h3><blockquote>
+<p><strong>Unicode 给世界上所有字符都分配了一个唯一的数字编号。</strong> 编号怎么对应到二进制表示，主要由 UTF-32、UTF-16 和 UTF-8 三种方案。</p>
+</blockquote>
+<ol>
+<li>UTF-32<ol>
+<li>每个字符都用4个字节表示，不兼容 ASCII</li>
+</ol>
+</li>
+<li>UTF-16<ol>
+<li>使用变长字节表示，大多两个字节，不兼容 ASCII</li>
+</ol>
+</li>
+<li>UTF-8<ol>
+<li>使用变长字节表示，使用的字节数 1~4个，兼容 ASCII</li>
+</ol>
+</li>
+</ol>
+<h2 id="16-Java-当中的四种引用"><a href="#16-Java-当中的四种引用" class="headerlink" title="16.Java 当中的四种引用"></a>16.Java 当中的四种引用</h2><h3 id="1-强引用"><a href="#1-强引用" class="headerlink" title="1.强引用"></a>1.强引用</h3><ol>
+<li>通过类似 <code>Object obj = new Object();</code> 创建的引用，称之为“强引用”。</li>
+<li>特点：<ol>
+<li>其指向的对象无论如何都不会被 JVM 垃圾回收器回收，即使面临 <code>OutofMemoryError</code> 的风险；</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-软引用"><a href="#2-软引用" class="headerlink" title="2.软引用"></a>2.软引用</h3><ol>
+<li><strong>描述一些还有用但非必须的对象。</strong> 对于软引用关联着的对象，如果新创建对象时，系统即将发生内存溢出，将会把这些对象列进回收范围进行二次回收。如果这次回收还没有足够的内存，就会抛出内存溢出异常。</li>
+</ol>
+<h3 id="3-弱引用"><a href="#3-弱引用" class="headerlink" title="3.弱引用"></a>3.弱引用</h3><ol>
+<li><strong>描述非必须的对象，强度低于软引用。</strong></li>
+<li>被引用的对象只能生存到下一次垃圾回收之前。当垃圾回收器工作时，不关当前内存是否足够，都会回收掉被弱引用管理的对象。</li>
+</ol>
+<h3 id="4-虚引用"><a href="#4-虚引用" class="headerlink" title="4.虚引用"></a>4.虚引用</h3><ol>
+<li>又称 <strong>幽灵引用</strong> 或 <strong>幻影引用</strong>。</li>
+<li>一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过一个虚引用来获得一个对象实例。</li>
+<li>设置的目的：<strong>能在这个对象被回收时收到一个系统的通知。</strong></li>
+</ol>
+<h2 id="17-深拷贝和浅拷贝的区别是什么？"><a href="#17-深拷贝和浅拷贝的区别是什么？" class="headerlink" title="17.深拷贝和浅拷贝的区别是什么？"></a>17.深拷贝和浅拷贝的区别是什么？</h2><h3 id="1-浅拷贝"><a href="#1-浅拷贝" class="headerlink" title="1.浅拷贝"></a>1.浅拷贝</h3><blockquote>
+<p>被拷贝对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。换言之，浅复制仅仅复制所考虑的对象，而不复制它所引用的对象。 </p>
+<p><strong>直接调用super.clone实现的clone方法全部都是浅拷贝</strong> </p>
+<p>8中基本类型和不可变对象属于直接拷贝值的类型。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B5%85%E6%8B%B7%E8%B4%9D1.png" alt="浅拷贝"></p>
+<ol>
+<li>对引用类型的改变会相互影响，但是基本类型就不存在影响。</li>
+<li><strong>如何实现浅拷贝：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Subject</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        name = s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        name = s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对象引用</span></span><br><span class="line">    <span class="keyword">private</span> Subject subj;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String s, String sub)</span> </span>&#123;</span><br><span class="line">        name = s;</span><br><span class="line">        subj = <span class="keyword">new</span> Subject(sub);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Subject <span class="title">getSubj</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subj;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        name = s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  重写clone()方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//浅拷贝</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 直接调用父类的clone()方法</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShallowCopy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 原始对象</span></span><br><span class="line">        Student stud = <span class="keyword">new</span> Student(<span class="string">"勒布朗"</span>, <span class="string">"詹姆斯"</span>);</span><br><span class="line">        System.out.println(<span class="string">"原始对象: "</span> + stud.getName() + <span class="string">" - "</span> + stud.getSubj().getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 拷贝对象</span></span><br><span class="line">        Student clonedStud = (Student) stud.clone();</span><br><span class="line">        System.out.println(<span class="string">"拷贝对象: "</span> + clonedStud.getName() + <span class="string">" - "</span> + clonedStud.getSubj().getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 原始对象和拷贝对象是否一样：</span></span><br><span class="line">        System.out.println(<span class="string">"原始对象和拷贝对象是否一样: "</span> + (stud == clonedStud));</span><br><span class="line">        <span class="comment">// 原始对象和拷贝对象的name属性是否一样</span></span><br><span class="line">        System.out.println(<span class="string">"原始对象和拷贝对象的name属性是否一样: "</span> + (stud.getName() == clonedStud.getName()));</span><br><span class="line">        <span class="comment">// 原始对象和拷贝对象的subj属性是否一样</span></span><br><span class="line">        System.out.println(<span class="string">"原始对象和拷贝对象的subj属性是否一样: "</span> + (stud.getSubj() == clonedStud.getSubj()));</span><br><span class="line"></span><br><span class="line">        stud.setName(<span class="string">"布莱恩特"</span>);</span><br><span class="line">        stud.getSubj().setName(<span class="string">"科比"</span>);</span><br><span class="line">        System.out.println(<span class="string">"更新后的原始对象: "</span> + stud.getName() + <span class="string">" - "</span> + stud.getSubj().getName());</span><br><span class="line">        System.out.println(<span class="string">"更新原始对象后的克隆对象: "</span> + clonedStud.getName() + <span class="string">" - "</span> + clonedStud.getSubj().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">原始对象: 勒布朗 - 詹姆斯</span><br><span class="line">拷贝对象: 勒布朗 - 詹姆斯</span><br><span class="line">原始对象和拷贝对象是否一样: <span class="keyword">false</span></span><br><span class="line">原始对象和拷贝对象的name属性是否一样: <span class="keyword">true</span></span><br><span class="line">原始对象和拷贝对象的subj属性是否一样: <span class="keyword">true</span></span><br><span class="line">更新后的原始对象: 布莱恩特 - 科比</span><br><span class="line">更新原始对象后的克隆对象: 勒布朗 - 科比</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>说明，<strong>对原始对象 stud 的 name 属性的改变没有影响拷贝对象；对原始对象 stud 的引用属性 subj 的改变影响了拷贝对象。</strong></li>
+</ol>
+<h3 id="2-深拷贝"><a href="#2-深拷贝" class="headerlink" title="2.深拷贝"></a>2.深拷贝</h3><blockquote>
+<p>被拷贝对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。换言之，深复制把要复制的对象所引用的对象都复制了一遍。 速度较慢且开销大。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E6%B7%B1%E6%8B%B7%E8%B4%9D.png" alt="深拷贝"></p>
+<ol>
+<li>两边变动相互不影响</li>
+<li>相比于浅拷贝的改变在于，重写 clone 方法：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 重写clone()方法 </span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> </span>&#123; </span><br><span class="line">   <span class="comment">// 深拷贝，创建拷贝类的一个新对象，这样就和原始对象相互独立</span></span><br><span class="line">   Student s = <span class="keyword">new</span> Student(name, subj.getName()); </span><br><span class="line">   <span class="keyword">return</span> s; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>需要先创建拷贝类的一个对象，再返回这个对象。</li>
+</ol>
+<h2 id="18-什么是编译期常量，有什么风险？"><a href="#18-什么是编译期常量，有什么风险？" class="headerlink" title="18.什么是编译期常量，有什么风险？"></a>18.什么是编译期常量，有什么风险？</h2><p>常量用 <code>static final</code> 修饰</p>
+<ol>
+<li><strong>编译期常量：程序在编译时就能确定这个常量的具体值；</strong></li>
+<li>非编译期常量：程序在运行时才能确定常量的值，也称运行时常量。</li>
+</ol>
+<p>定义上来讲，声明为 final 类型的基本类型或者 String 类型并直接赋值（非运算）的变量就是编译期常量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译期常量</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">final</span> String str = <span class="string">"abcd"</span>;</span><br><span class="line"><span class="comment">// 非编译期常量</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> i = rand.nextInt();</span><br></pre></td></tr></table></figure>
+
+<p>注意：由于在编译期常量在编译时就确定了值，使用编译期常量的地方在编译时会替换成对应的值即字面量。</p>
+<p>我们一般将编译期常量声明为<code>public static final</code>类型（静态常量），在这种情况下，<strong>引用编译期常量不会导致类的初始化</strong> 。 本来引用 static 变量会引起类加载器加载常量所在类，并进行初始化，但由于是编译期常量，编译器在编译引用这个常量的类时，会直接将常量替换为对应值，也就无需再去加载常量所在的类了。 </p>
+<p> <strong>编译期常量不依赖类，不会引起类的初始化；而运行时常量依赖类，会引起类的初始化</strong> 。</p>
+<ol start="3">
+<li><strong>风险</strong></li>
+</ol>
+<p>如果我们项目很大大，项目整个编译一次特别耗费时间，那么我们有可能会只编译代码修改的部分。而一旦我们修改了编译期常量A，但又未重新编译所有引用编译期常量A的部分（即.java文件），那么就会导致未重新编译的那部分代码继续使用编译期常量A的旧值。 </p>
+<p><strong>所以，在更新依赖文件时，要确保重新编译自己的文件，避免依旧使用原有的编译期常量旧值，产生错误。</strong></p>
+<h2 id="19-你对-String-对象的-intern-熟悉吗？"><a href="#19-你对-String-对象的-intern-熟悉吗？" class="headerlink" title="19.你对 String 对象的 intern() 熟悉吗？"></a>19.你对 String 对象的 intern() 熟悉吗？</h2><ol>
+<li><p>首先<code>intern()</code> 是 String 类的一个本地方法。可以减少内存中相同字符串的数量，节省一些空间。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">intern</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据该方法的注释，我们可以得到如下结论：</p>
+<ol>
+<li>方法返回字符串对象的规范化表示形式；</li>
+<li>String 类最初有一个空的私有的字符串池；</li>
+<li>当<code>intern()</code> 方法调用的时候，如果常量池中已经包含调用<code>intern()</code> 方法的字符串时，返回的是常量池中的字符串；否则，将这个调用者字符串加入常量池，并返回这个字符串的引用。也就是说，对于两个字符串 s 和 t，<code>s.intern() == t.intern()</code> 当且仅当 <code>s.equals(t) == true</code> 。</li>
+</ol>
+</li>
+<li><p><code>new String(&quot;xxx&quot;)</code> 都是在堆上创建字符串对象。当调用<code>intern()</code> 方法时，编译器会将字符串添加到常量池中，并返回指向该常量的一个引用。</p>
+<ol>
+<li><p><code>new String(&quot;xxx&quot;);</code> 是在堆上创建字符串对象；<img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern1.png" alt></p>
+</li>
+<li><p>若调用 <code>Str1.intern()</code> ，编译器会将字符串 “hello” 添加到字符串常量池中，并返回指向该常量的引用。如果此后再去调用 <code>Str2.intern()</code> ，因为常量池中已经存在 “hello”，则直接返回常量池中 ‘’hello” 的引用。<strong>（JDK 1.6）</strong><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern2.png" alt></p>
+</li>
+</ol>
+</li>
+<li><p>通过<strong>字面量赋值创建字符串</strong>时，会先在常量池中查找是否存在相同的字符串，若存在，则将引用直接指向常量池中的字符串；如果不存在，则在常量池中生成一个字符串，再将该字符串的引用指向接收者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String Str1 = <span class="string">"hello"</span>;</span><br><span class="line">String Str2 = <span class="string">"hello"</span>;</span><br><span class="line">String Str3 = <span class="string">"world"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>根据上面三行代码，有如下图示：</p>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/intern3.png" alt></p>
+</li>
+<li><p><strong>对于字符串的 “+” 操作，在编译阶段会直接合并成一个字符串，相当于创建了一个字面量字符串。</strong>如：<code>String S1 = &quot;Hello&quot; + &quot; World&quot;;</code> 在编译阶段会被合并成为<code>String S1 = “Hello World”;</code> 剩下的操作就和通过字面量创建字符串一样了。</p>
+</li>
+<li><p><strong>对于 final 字段修饰的，编译期直接进行了常量替换；</strong></p>
+</li>
+<li><p><strong>常量字符串和变量拼接时</strong>，会调用<code>StringBuilder.append();</code> <strong>在堆上创建新的对象</strong>；例如：<code>String S1 = str1 + &quot;world&quot;;</code> </p>
+</li>
+<li><p>JDK 1.7 以后，<code>intern()</code> 方法还是会去检查常量池中是否存在调用者字符串，如果存在就直接返回引用；<strong>如果不存在</strong>，<strong>与 JDK 1.6  不同的是，不再创建一个字符串的拷贝再加入常量池，而是在常量池中生成一个对应字符串的引用。</strong> 也就是说，<strong>原来在常量池中找不到就复制一个放进去，1.7 以后就是将堆上的引用复制到常量池中。</strong></p>
+</li>
+<li><p>举栗说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>) + <span class="keyword">new</span> String(<span class="string">" world"</span>);</span><br><span class="line">    str2.intern();</span><br><span class="line">    String str1 = <span class="string">"hello world"</span>;</span><br><span class="line">    System.out.println(str2 == str1);	<span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行 str2.intern(); 的时候常量池中还没有 "hello world" 字符串，所以将 "hello world" 的在堆中的引用放入常量池；当执行 String str1 = "hello world";时，常量池中已经有一个地址了，所以直接返回那个地址，也就是 str2 指向的地址。顾两个地址相同为 true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>) + <span class="keyword">new</span> String(<span class="string">" world"</span>);</span><br><span class="line">    String str1 = <span class="string">"hello world"</span>;</span><br><span class="line">    str2.intern();</span><br><span class="line">    System.out.println(str2 == str1);	<span class="comment">// false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第2行创建的对象放在堆中，即 str2 指向堆中的地址</span></span><br><span class="line"><span class="comment">// 第3行，此时常量池中没有 "hello world"，所以在常量池中创建一个 "hello world"</span></span><br><span class="line"><span class="comment">// 第4行，此时返回一个常量池中的引用，没人接收，所以 str2 还是指向堆中的地址</span></span><br><span class="line"><span class="comment">// 如果改为如下代码，则输出 true</span></span><br><span class="line">	str2 = str2.intern(); <span class="comment">// 相当于用 str2 来接收常量池中的 "hello world" 引用。</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="20-a-a-b-和-a-b-有什么区别？"><a href="#20-a-a-b-和-a-b-有什么区别？" class="headerlink" title="20.a = a + b  和 a += b  有什么区别？"></a>20.<code>a = a + b</code>  和 <code>a += b</code>  有什么区别？</h2><h3 id="1-a-a-b"><a href="#1-a-a-b" class="headerlink" title="1. a = a + b"></a>1. <code>a = a + b</code></h3><ol>
+<li>我们先看一段代码，关于 <code>a = a + b;</code> 为方便看编译器警告，直接截图：</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A21.png" alt></p>
+<ol start="2">
+<li>原因：</li>
+</ol>
+<ul>
+<li>a 是一个 byte 类型，而数字 4 是一个 int 类型。在 java 中进行运算时，会进行自动类型转换，将 <code>a + 4</code> 转换成 int 类型，但是变量 a 是 byte 类型，将 int 类型 <code>a + 4</code> 强制转换成 byte 会产生错误（低转高可以，高转低在强制类型转换的条件下可能出现溢出错误）。</li>
+<li>如果尝试进行强制类型转换，在 byte 取值范围内可行，但是当超出范围，会出现溢出错误或者精度下降，如下</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A22.png" alt></p>
+<h3 id="2-a-b"><a href="#2-a-b" class="headerlink" title="2.a +=  b"></a>2.<code>a +=  b</code></h3><ol>
+<li>直接先看代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span> a = <span class="number">4</span>;</span><br><span class="line">        a += <span class="number">4</span>;</span><br><span class="line">        System.out.println(a);  <span class="comment">// 输出 8，转换正常</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>+=</code> 是 java 中的一个运算符，在运算过程中，首先会进行自动类型转换，所以在编译时没有报错。</li>
+<li>但是！！！！！！！！！！<strong>仅仅只是在编译时不报错，超出还是会溢出或精度下降</strong>，如果出现下列情况</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span> a = <span class="number">4</span>;</span><br><span class="line">        a += <span class="number">124</span>;</span><br><span class="line">        System.out.println(a);  <span class="comment">// 输出 -128，byte 溢出，得到不是我们想要的结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h3><ol>
+<li>在两个变量的数据类型一致时，<code>a = a + b</code> 和 <code>a += b</code> 没有区别；</li>
+<li>当两个变量的数据类型不同时，需要考虑数据类型的自动转换问题；</li>
+<li>低位转高位没问题，但是当出现需要高位转向低位时，都要考虑溢出或者精度下降的问题。</li>
+<li>byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt; double</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">byte</th>
+<th align="center">short</th>
+<th align="center">int（默认）</th>
+<th align="center">long</th>
+<th align="center">float</th>
+<th align="center">double（默认）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">占用字节数</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">8</td>
+</tr>
+</tbody></table>
+<h2 id="21-throw和throws的区别"><a href="#21-throw和throws的区别" class="headerlink" title="21.throw和throws的区别"></a>21.throw和throws的区别</h2><h3 id="1-throw"><a href="#1-throw" class="headerlink" title="1.throw"></a>1.throw</h3><ol>
+<li>就是抛出异常，会触发 Java 的异常处理机制</li>
+<li>return 代表正常退出，throw 代表异常退出；return 的返回值是确定的，就是上一级调用者，而 throw 后执行哪行代码经常是不确定的，由异常处理机制动态确定</li>
+</ol>
+<h3 id="2-throws"><a href="#2-throws" class="headerlink" title="2.throws"></a>2.throws</h3><ol>
+<li>用于声明一个方法可以抛出异常，可以有多个，用逗号隔开</li>
+<li>且没有对这个异常进行处理，至少没有处理完，调用者必须对其进行处理。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+      
+      <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+      
+      </div>
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/面试准备/" rel="tag"><i class="fa fa-tag"></i></a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/27/面试常见问题-java篇-part1/" rel="next" title="面试常见问题-Java篇-part1">
+                  <i class="fa fa-chevron-left"></i> 面试常见问题-Java篇-part1
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java基础"><span class="nav-text">1.Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-String-转换成-Integer-的方式及原理"><span class="nav-text">11. String 转换成 Integer 的方式及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？"><span class="nav-text">12. 静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-是否可以被重写？"><span class="nav-text">1. 是否可以被重写？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-是否可以被重写？"><span class="nav-text">2.是否可以被重写？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用"><span class="nav-text">13. 成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-静态内部类"><span class="nav-text">1. 静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-成员内部类"><span class="nav-text">2.成员内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法内部类（局部内部类）"><span class="nav-text">3.方法内部类（局部内部类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-匿名内部类"><span class="nav-text">4.匿名内部类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-讲一下常见编码方式？"><span class="nav-text">15. 讲一下常见编码方式？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-非-Unicode-编码"><span class="nav-text">1.非 Unicode 编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Unicode-编码"><span class="nav-text">2.Unicode 编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Java-当中的四种引用"><span class="nav-text">16.Java 当中的四种引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-强引用"><span class="nav-text">1.强引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-软引用"><span class="nav-text">2.软引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-弱引用"><span class="nav-text">3.弱引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-虚引用"><span class="nav-text">4.虚引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-深拷贝和浅拷贝的区别是什么？"><span class="nav-text">17.深拷贝和浅拷贝的区别是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浅拷贝"><span class="nav-text">1.浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-深拷贝"><span class="nav-text">2.深拷贝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-什么是编译期常量，有什么风险？"><span class="nav-text">18.什么是编译期常量，有什么风险？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-你对-String-对象的-intern-熟悉吗？"><span class="nav-text">19.你对 String 对象的 intern() 熟悉吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-a-a-b-和-a-b-有什么区别？"><span class="nav-text">20.a = a + b  和 a += b  有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-a-a-b"><span class="nav-text">1. a = a + b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-a-b"><span class="nav-text">2.a +=  b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-区别"><span class="nav-text">3.区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-throw和throws的区别"><span class="nav-text">21.throw和throws的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-throw"><span class="nav-text">1.throw</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-throws"><span class="nav-text">2.throws</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yan-xin</p>
+  <div class="site-description" itemprop="description">人生不如意十之八九，你是一二。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan-xin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">87k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:36</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+<!--  隐藏页面底部powered by hexo
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+-->
+
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("09/1/2019 12:00:00");
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  
+  <!-- 页面点击小桃心-->
+  <script type="text/javascript" src="/js/src/click-love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":175,"height":450},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
