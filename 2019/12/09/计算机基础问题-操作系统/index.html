@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="计算机基础问题-操作系统">
+<meta name="keywords" content="面试准备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础问题-操作系统">
+<meta property="og:url" content="http://yoursite.com/2019/12/09/计算机基础问题-操作系统/index.html">
+<meta property="og:site_name" content="严先森的博客">
+<meta property="og:description" content="计算机基础问题-操作系统">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-09T09:17:02.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机基础问题-操作系统">
+<meta name="twitter:description" content="计算机基础问题-操作系统">
+  <link rel="canonical" href="http://yoursite.com/2019/12/09/计算机基础问题-操作系统/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机基础问题-操作系统 | 严先森的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">严先森的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/计算机基础问题-操作系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan-xin">
+      <meta itemprop="description" content="人生不如意十之八九，你是一二。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="严先森的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机基础问题-操作系统
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-09 17:16:07 / 修改时间：17:17:02" itemprop="dateCreated datePublished" datetime="2019-12-09T17:16:07+08:00">2019-12-09</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>2.8k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>7 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算机基础问题-操作系统</p>
+<a id="more"></a>
+
+<p>[TOC]</p>
+<h2 id="1-进程之间有哪些通信方式"><a href="#1-进程之间有哪些通信方式" class="headerlink" title="1.进程之间有哪些通信方式"></a>1.进程之间有哪些通信方式</h2><p><strong>进程同步：</strong>控制多个进程按一定的顺序执行；</p>
+<p><strong>进程通信：</strong>进程间传输信息</p>
+<p><strong>进程通信是一种手段，而进程同步是一种目的。即为了能够达到进程同步的目的，需要让进程进行通信。</strong></p>
+<ol>
+<li><strong>管道</strong><ol>
+<li>只支持<strong>半双工</strong>通信</li>
+<li>只能在父子进程或兄弟进程中使用</li>
+</ol>
+</li>
+<li><strong>FIFO（命名管道）</strong><ol>
+<li>常用于客户-服务器应用程序中，FIFO用作汇聚点，在客户进程和服务器进程之间传输信息</li>
+<li><strong>效率低</strong>下，实现<strong>简单</strong></li>
+</ol>
+</li>
+<li><strong>消息队列</strong><ol>
+<li><strong>独立于读写进程</strong>存在，避免了FIFO中同步管道的打开和关闭时可能产生的困难；</li>
+<li><strong>避免了FIFO的同步阻塞</strong>问题，不需要进程自己提高同步方法</li>
+<li>读进程可以根据消息类型有选择地接收消息，不像FIFO那样只能默认接收</li>
+<li><strong>不适合发送数据很大</strong>的情况</li>
+</ol>
+</li>
+<li><strong>信号量（Semaphore)</strong><ol>
+<li>一个计数器，用于为多个进程提供对共享数据对象的访问</li>
+</ol>
+</li>
+<li><strong>共享存储</strong><ol>
+<li>允许多个进程共享一个给定的存储区</li>
+<li>需要使用信号量用来同步对共享存储的访问</li>
+<li>多个进程可以将同一个文件映射到它们的地址空间从而实现共享内存</li>
+<li>系统加载一个进程的时候，分配给进程的内存并不是<strong>实际物理内存</strong>，而是<strong>虚拟内存空间</strong>。那么我们可以让两个进程各自拿出一块虚拟地址空间来，然后映射到相同的物理内存中，这样，两个进程虽然有着独立的虚拟内存空间，但有一部分却是映射到相同的物理内存，这就完成了<strong>内存共享</strong>机制了</li>
+</ol>
+</li>
+<li><strong>套接字（Socket）</strong><ol>
+<li>可用于不同机器间的进程通信</li>
+</ol>
+</li>
+<li><strong>总结：</strong> 共有6种通信方式，其中，<strong>管道</strong> 和 <strong>FIFO</strong> 属于同一类管道类。</li>
+</ol>
+<h2 id="2-经典的进程调度算法"><a href="#2-经典的进程调度算法" class="headerlink" title="2. 经典的进程调度算法"></a>2. 经典的进程调度算法</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483688&idx=1&sn=662216279b28c21366d8bcaa1f9e8d21&chksm=fa3b6fc9cd4ce6df357cd7a89265406b7c6febfc559d2fdace0f88006b782df05674db7c5671&scene=21#wechat_redirect" target="_blank" rel="noopener">进程调度，一个调度器的自白</a></p>
+<blockquote>
+<p> 进程是资源分配的基本单位，进程调度器负责计算机内所有进程的调度，为进程们分配CPU资源。</p>
+</blockquote>
+<h3 id="1-FCFS（First-Come-First-Serve）先来先服务调度算法"><a href="#1-FCFS（First-Come-First-Serve）先来先服务调度算法" class="headerlink" title="1. FCFS（First Come First Serve）先来先服务调度算法"></a>1. FCFS（First Come First Serve）先来先服务调度算法</h3><ol>
+<li>最初的一种进程调度算法，既可以用于作业调度，也能用于进程调度；</li>
+<li><strong>在作业调度中：</strong> 每次从<strong>后备作业队列</strong>中选择最先到来的作业进入内存，分配必要的资源，创建进程并进入就绪队列</li>
+<li><strong>在进程调度中：</strong> 每次从<strong>就绪队列</strong>中选择最先进入的进程，将处理机分配给他，使其运行，直到 <strong>运行完毕</strong> 或某种原因而阻塞时才释放处理机。</li>
+<li><strong>FCFS</strong> 简单，效率低。对长作业（进程）比较有利，相应的，对于短作业（进程）而言，举个较为极端的栗子，他等待了10000年，却只执行了1秒钟。有利于 CPU 繁忙型作业，不适用于I/O繁忙型作业。</li>
+<li>不能作为分时系统和实时系统的主要调度策略，经常和其他结合使用（和优先级调度算法结合使用）。</li>
+</ol>
+<p>有了上述对于短作业（进程）的痛点，调度算法进行了改进；如下</p>
+<h3 id="2-SJF（Shortest-Job-First-SPF-Shortest-Process-First"><a href="#2-SJF（Shortest-Job-First-SPF-Shortest-Process-First" class="headerlink" title="2.SJF（Shortest Job First)  /   SPF (Shortest Process First)"></a>2.SJF（Shortest Job First)  /   SPF (Shortest Process First)</h3><ol>
+<li><strong>SJF ：</strong>从后备队列中选择<strong>一个或若干个</strong>估计运行时间最短的作业，调入内存运行；</li>
+<li><strong>SPF ：</strong>从就绪队列中选择<strong>一个</strong>估计运行时间最短的进程，将处理机分配给他，使之立即运行。</li>
+<li>该算法解决了 FCFS 中对于短作业（进程）等待时间很长，运行时间很短的问题，但是也带来了新的问题；</li>
+<li>如果后备队列中源源不断的进入预估运行时间短的作业，那么原有的那些预估运行时间长的作业就迟迟得不到运行，极端一点，就会导致长作业被<strong>“饿死”</strong>，即长时间得不到调度。长进程同理，也会出现<strong>“饥饿”</strong> 情况。</li>
+<li>该算法<strong>没有考虑作业的紧迫程度</strong>，不能保证紧迫作业能被及时处理（这个问题可以被 <strong>优先级调度算法</strong> 解决）</li>
+<li>由于作业的长度是由用户所提供的估计执行时间而定，所以不一定能真正做到短作业（进程）优先调度。</li>
+</ol>
+<p>有了 FCFS 和 SJF 后，出现了新的<strong>综合考虑二者（既照顾长作业，由照顾短作业）</strong>的调度算法出现，如下：</p>
+<h3 id="3-高响应比优先调度算法"><a href="#3-高响应比优先调度算法" class="headerlink" title="3. 高响应比优先调度算法"></a>3. 高响应比优先调度算法</h3><ol>
+<li><p><strong>主要用于作业调度</strong></p>
+</li>
+<li><p>是 FCFS 和 SJF 的综合平衡：<strong>同时考虑每个作业的等待时间和预估运行时间</strong>，在每次进行作业调度时，先计算后备作业队列中每个作业的响应比，选择响应比最高的作业投入运行。响应比公式如下：</p>
+<p>​                                                     $响应比Rp = (等待时间 + 要求服务时间)  / 要求服务时间$ </p>
+</li>
+<li><p>根据上述公式，我们可以得到如下结论：</p>
+<ol>
+<li>作业等待时间相同的时候，要求服务时间越短，响应比越高，有利于短作业</li>
+<li>要求服务时间相同的时候，等待时间越长，响应比越高，此时就是 FCFS</li>
+<li>对于长作业，作业的响应比可以随着等待时间的增加而提高，当其等待时间足够长时，响应比就很大，从而可以获得处理机，克服了 <strong>“饥饿”</strong> 的情况，兼顾了长作业。</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-时间片轮转算法"><a href="#4-时间片轮转算法" class="headerlink" title="4.时间片轮转算法"></a>4.时间片轮转算法</h3><ol>
+<li><strong>适用于分时系统</strong></li>
+<li>系统将所有的就绪进程按到达时间排成一个队列，进程调度程序总是选择队列头的进程运行，并<strong>开启定时器</strong>，即一个时间片。一个时间片用完之后，该进程被迫<strong>“下机”</strong> 进入队列尾<strong>排队等待下一次循环到队列头</strong>。下一个进程还是选择当前的队列头，即 FCFS，因为是按照到达时间排队的。</li>
+<li>时间片的大小对系统性能影响较大<ol>
+<li>如果时间片足够大，以至于队列中所有进程都能在一个时间片内运行完毕，那么就退化成一个 FCFS 了；</li>
+<li>如果时间片很小，单位时间可以运行的进程从直观上来说就会越多，<strong>但是</strong>，此时处理机就会在进程间频繁切换，进程的频繁切换会导致大量CPU资源浪费（上下文切换产生开销），使处理机开销增大。</li>
+</ol>
+</li>
+<li>时间片长短的决定因素：<strong>系统的响应时间</strong>，<strong>就绪队列中的进程数目</strong>以及<strong>系统的处理能力</strong>。</li>
+</ol>
+<h3 id="5-优先级调度算法"><a href="#5-优先级调度算法" class="headerlink" title="5. 优先级调度算法"></a>5. 优先级调度算法</h3><ol>
+<li>可用于作业调度和进程调度；</li>
+<li>优先级高的先运行，每次都选择优先级最高的作业（进程）来运行</li>
+<li>根据新的最高优先级进程能否抢占正在运行的进程，又可以分为<ol>
+<li><strong>非剥夺式优先级调度算法：</strong>等待前一个运行的进程运行结束最新高优先级才运行</li>
+<li><strong>剥夺式优先级调度算法：</strong> 不管三七二十一，立即停止当前正在运行的进程，运行更重要或紧迫的进程</li>
+</ol>
+</li>
+<li>根据进程创建后优先级是否可以改变，又可以分为：<ol>
+<li><strong>静态优先级：</strong>优先级在创建时确定，在运行时不变。主要依据：<strong>进程类型、进程对资源的需求、用户要求</strong></li>
+<li><strong>动态优先级：</strong> 优先级动态变化，为保证低优先级不被<strong>“饿死”</strong>， 低优先级随时间增加，优先级可以逐步升高。主要依据：<strong>进程占用CPU的时间的长度、就绪进程等待CPU时间的长短</strong>。</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-多级反馈队列调度算法（结合前五种的优点）"><a href="#6-多级反馈队列调度算法（结合前五种的优点）" class="headerlink" title="6.多级反馈队列调度算法（结合前五种的优点）"></a>6.多级反馈队列调度算法（结合前五种的优点）</h3><ol>
+<li>是时间片轮转算法和优先级调度算法的综合和发展；</li>
+<li>动态调整进程优先级和时间片大小</li>
+<li>如下优点：<ol>
+<li>终端型作业用户：短作业优先</li>
+<li>短批处理作业用户：周转时间较短</li>
+<li>长批处理作业用户：经过前面几个队列得到部分执行，不会长期得不到处理。</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-用户级线程和内核级线程"><a href="#3-用户级线程和内核级线程" class="headerlink" title="3.用户级线程和内核级线程"></a>3.用户级线程和内核级线程</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483712&idx=1&sn=18e53f3d77a32d8aa9eb57adb2e05f86&chksm=fa3b6fa1cd4ce6b7987923efba596c1467362239d32851c0f175d56627405e6a31fdfa56922f&scene=21#wechat_redirect" target="_blank" rel="noopener">用户级线程和内核级线程有什么区别？</a></p>
+<h2 id="4-线程的来源"><a href="#4-线程的来源" class="headerlink" title="4.线程的来源"></a>4.线程的来源</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483706&idx=1&sn=1b806a9e3cc29b8050ae0eaa15eb5d8f&chksm=fa3b6fdbcd4ce6cdd75291ac7632aea482b0f87901f5856a5c396ab27dcf57625f0f6e9ed8d3&scene=21#wechat_redirect" target="_blank" rel="noopener">线程的来龙去脉</a></p>
+<h2 id="5-互斥"><a href="#5-互斥" class="headerlink" title="5.互斥"></a>5.互斥</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483748&idx=1&sn=b07031e0e2f34ad1529e9b2d86a369b6&chksm=fa3b6f85cd4ce693476e6dc1b23ee0029794dfc7559cc27e9690a5118ab2bf8ea2b005589d90&scene=21#wechat_redirect" target="_blank" rel="noopener">互斥那点事儿-上</a></p>
+<p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483753&idx=1&sn=595cf7dc086aa37fedf6535675b15c64&chksm=fa3b6f88cd4ce69e9f4b0b9a6608f00b2e5a1e7cebb0ba5e2411efdacbae3586e62f2d85fee0&scene=21#wechat_redirect" target="_blank" rel="noopener">互斥那点事儿-下</a></p>
+<h2 id="6-各种锁"><a href="#6-各种锁" class="headerlink" title="6.各种锁"></a>6.各种锁</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485371&idx=1&sn=d20720183cb10590e88f163f7fa87245&scene=21#wechat_redirect" target="_blank" rel="noopener">一句话撸完重量级锁、自旋锁、轻量级锁、偏向锁、悲观、乐观锁等各种锁 —- 不看后悔系列</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+      
+      <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+      
+      </div>
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/面试准备/" rel="tag"><i class="fa fa-tag"></i></a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/12/08/面试常见问题-java篇-part3/" rel="next" title="面试常见问题-java篇-part3">
+                  <i class="fa fa-chevron-left"></i> 面试常见问题-java篇-part3
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程之间有哪些通信方式"><span class="nav-text">1.进程之间有哪些通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-经典的进程调度算法"><span class="nav-text">2. 经典的进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-FCFS（First-Come-First-Serve）先来先服务调度算法"><span class="nav-text">1. FCFS（First Come First Serve）先来先服务调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SJF（Shortest-Job-First-SPF-Shortest-Process-First"><span class="nav-text">2.SJF（Shortest Job First)  /   SPF (Shortest Process First)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高响应比优先调度算法"><span class="nav-text">3. 高响应比优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-时间片轮转算法"><span class="nav-text">4.时间片轮转算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先级调度算法"><span class="nav-text">5. 优先级调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多级反馈队列调度算法（结合前五种的优点）"><span class="nav-text">6.多级反馈队列调度算法（结合前五种的优点）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户级线程和内核级线程"><span class="nav-text">3.用户级线程和内核级线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-线程的来源"><span class="nav-text">4.线程的来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-互斥"><span class="nav-text">5.互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-各种锁"><span class="nav-text">6.各种锁</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yan-xin</p>
+  <div class="site-description" itemprop="description">人生不如意十之八九，你是一二。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan-xin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">96k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:01</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+<!--  隐藏页面底部powered by hexo
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+-->
+
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("09/1/2019 12:00:00");
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  
+  <!-- 页面点击小桃心-->
+  <script type="text/javascript" src="/js/src/click-love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":175,"height":450},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
