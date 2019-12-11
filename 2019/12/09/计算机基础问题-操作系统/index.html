@@ -63,10 +63,12 @@
 <meta property="og:site_name" content="严先森的博客">
 <meta property="og:description" content="计算机基础问题-操作系统">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-09T09:20:03.839Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E5%86%85%E6%A0%B8%E7%BA%A7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BA%A7.png">
+<meta property="og:updated_time" content="2019-12-11T08:30:21.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机基础问题-操作系统">
 <meta name="twitter:description" content="计算机基础问题-操作系统">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E5%86%85%E6%A0%B8%E7%BA%A7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BA%A7.png">
   <link rel="canonical" href="http://yoursite.com/2019/12/09/计算机基础问题-操作系统/">
 
 
@@ -235,11 +237,19 @@
                 
               
 
-              <time title="创建时间：2019-12-09 17:16:07 / 修改时间：17:20:03" itemprop="dateCreated datePublished" datetime="2019-12-09T17:16:07+08:00">2019-12-09</time>
+              <time title="创建时间：2019-12-09 17:16:07" itemprop="dateCreated datePublished" datetime="2019-12-09T17:16:07+08:00">2019-12-09</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-11 16:30:21" itemprop="dateModified" datetime="2019-12-11T16:30:21+08:00">2019-12-11</time>
+              </span>
             
           
 
@@ -252,7 +262,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.7k</span>
+              <span>3.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -262,7 +272,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>7 分钟</span>
+              <span>8 分钟</span>
             </span>
           
 
@@ -388,10 +398,30 @@
 </li>
 </ol>
 <h2 id="3-用户级线程和内核级线程"><a href="#3-用户级线程和内核级线程" class="headerlink" title="3.用户级线程和内核级线程"></a>3.用户级线程和内核级线程</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483712&idx=1&sn=18e53f3d77a32d8aa9eb57adb2e05f86&chksm=fa3b6fa1cd4ce6b7987923efba596c1467362239d32851c0f175d56627405e6a31fdfa56922f&scene=21#wechat_redirect" target="_blank" rel="noopener">用户级线程和内核级线程有什么区别？</a></p>
-<h2 id="4-线程的来源"><a href="#4-线程的来源" class="headerlink" title="4.线程的来源"></a>4.线程的来源</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483706&idx=1&sn=1b806a9e3cc29b8050ae0eaa15eb5d8f&chksm=fa3b6fdbcd4ce6cdd75291ac7632aea482b0f87901f5856a5c396ab27dcf57625f0f6e9ed8d3&scene=21#wechat_redirect" target="_blank" rel="noopener">线程的来龙去脉</a></p>
-<h2 id="5-互斥"><a href="#5-互斥" class="headerlink" title="5.互斥"></a>5.互斥</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483748&idx=1&sn=b07031e0e2f34ad1529e9b2d86a369b6&chksm=fa3b6f85cd4ce693476e6dc1b23ee0029794dfc7559cc27e9690a5118ab2bf8ea2b005589d90&scene=21#wechat_redirect" target="_blank" rel="noopener">互斥那点事儿-上</a></p>
+<h2 id="4-多线程模型"><a href="#4-多线程模型" class="headerlink" title="4.多线程模型"></a>4.多线程模型</h2><blockquote>
+<p>有些系统同时支持用户线程和内核线程，由此产生了不同的多线程模型，即实现用户级线程和内核级线程的连接方式。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yxin185/picGo/master/img7-15/%E5%86%85%E6%A0%B8%E7%BA%A7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BA%A7.png" alt="多线程模型"></p>
+<ol>
+<li><strong>多对一模型：（a)</strong> 将多个用户级线程映射到一个内核级线程，线程管理在用户空间完成。用户级线程对操作系统不可见（即透明）<ol>
+<li><strong>优点：</strong>线程管理在用户空间完成，效率高</li>
+<li><strong>缺点：</strong>当一个线程在使用内核服务时被阻塞，那么整个进程都会被阻塞；多个线程不能并行运行在多个处理机上。</li>
+</ol>
+</li>
+<li><strong>一对一模型：（b）</strong> 每个用户线程对应一个内核级线程<ol>
+<li><strong>优点：</strong> 当一个线程被阻塞后，其他线程还能正常执行，因此并发性能好；</li>
+<li><strong>缺点：</strong> 每创建一个用户级线程都要创建一个对应的内核级线程与之对应，开销较大，会影响到应用程序的性能。</li>
+</ol>
+</li>
+<li><strong>多对多模型：(C)</strong> 将 n 个用户级线程对应到 m 个内核级线程。<code>n &gt;= m</code> <ol>
+<li>特点：是前两种模型取了一个折中。集两者之所长。</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-线程的来源"><a href="#5-线程的来源" class="headerlink" title="5.线程的来源"></a>5.线程的来源</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483706&idx=1&sn=1b806a9e3cc29b8050ae0eaa15eb5d8f&chksm=fa3b6fdbcd4ce6cdd75291ac7632aea482b0f87901f5856a5c396ab27dcf57625f0f6e9ed8d3&scene=21#wechat_redirect" target="_blank" rel="noopener">线程的来龙去脉</a></p>
+<h2 id="6-互斥"><a href="#6-互斥" class="headerlink" title="6.互斥"></a>6.互斥</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483748&idx=1&sn=b07031e0e2f34ad1529e9b2d86a369b6&chksm=fa3b6f85cd4ce693476e6dc1b23ee0029794dfc7559cc27e9690a5118ab2bf8ea2b005589d90&scene=21#wechat_redirect" target="_blank" rel="noopener">互斥那点事儿-上</a></p>
 <p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=MzUyMzU5ODczNA==&mid=2247483753&idx=1&sn=595cf7dc086aa37fedf6535675b15c64&chksm=fa3b6f88cd4ce69e9f4b0b9a6608f00b2e5a1e7cebb0ba5e2411efdacbae3586e62f2d85fee0&scene=21#wechat_redirect" target="_blank" rel="noopener">互斥那点事儿-下</a></p>
-<h2 id="6-各种锁"><a href="#6-各种锁" class="headerlink" title="6.各种锁"></a>6.各种锁</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485371&idx=1&sn=d20720183cb10590e88f163f7fa87245&scene=21#wechat_redirect" target="_blank" rel="noopener">一句话撸完重量级锁、自旋锁、轻量级锁、偏向锁、悲观、乐观锁等各种锁 —- 不看后悔系列</a></p>
+<h2 id="7-各种锁"><a href="#7-各种锁" class="headerlink" title="7.各种锁"></a>7.各种锁</h2><p>参考来源：<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485371&idx=1&sn=d20720183cb10590e88f163f7fa87245&scene=21#wechat_redirect" target="_blank" rel="noopener">一句话撸完重量级锁、自旋锁、轻量级锁、偏向锁、悲观、乐观锁等各种锁 —- 不看后悔系列</a></p>
 
     </div>
 
@@ -484,7 +514,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程之间有哪些通信方式"><span class="nav-text">1.进程之间有哪些通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-经典的进程调度算法"><span class="nav-text">2. 经典的进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-FCFS（First-Come-First-Serve）先来先服务调度算法"><span class="nav-text">1. FCFS（First Come First Serve）先来先服务调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SJF（Shortest-Job-First-SPF-Shortest-Process-First"><span class="nav-text">2.SJF（Shortest Job First)  /   SPF (Shortest Process First)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高响应比优先调度算法"><span class="nav-text">3. 高响应比优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-时间片轮转算法"><span class="nav-text">4.时间片轮转算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先级调度算法"><span class="nav-text">5. 优先级调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多级反馈队列调度算法（结合前五种的优点）"><span class="nav-text">6.多级反馈队列调度算法（结合前五种的优点）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户级线程和内核级线程"><span class="nav-text">3.用户级线程和内核级线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-线程的来源"><span class="nav-text">4.线程的来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-互斥"><span class="nav-text">5.互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-各种锁"><span class="nav-text">6.各种锁</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程之间有哪些通信方式"><span class="nav-text">1.进程之间有哪些通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-经典的进程调度算法"><span class="nav-text">2. 经典的进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-FCFS（First-Come-First-Serve）先来先服务调度算法"><span class="nav-text">1. FCFS（First Come First Serve）先来先服务调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SJF（Shortest-Job-First-SPF-Shortest-Process-First"><span class="nav-text">2.SJF（Shortest Job First)  /   SPF (Shortest Process First)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高响应比优先调度算法"><span class="nav-text">3. 高响应比优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-时间片轮转算法"><span class="nav-text">4.时间片轮转算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先级调度算法"><span class="nav-text">5. 优先级调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多级反馈队列调度算法（结合前五种的优点）"><span class="nav-text">6.多级反馈队列调度算法（结合前五种的优点）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户级线程和内核级线程"><span class="nav-text">3.用户级线程和内核级线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-多线程模型"><span class="nav-text">4.多线程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-线程的来源"><span class="nav-text">5.线程的来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-互斥"><span class="nav-text">6.互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-各种锁"><span class="nav-text">7.各种锁</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -545,14 +575,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">97k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:01</span>
+    <span title="站点阅读时长">4:02</span>
 </div>
 
 <div class="powered-by">
